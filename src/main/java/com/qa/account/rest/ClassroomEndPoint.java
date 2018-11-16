@@ -3,10 +3,7 @@ package com.qa.account.rest;
 import com.qa.account.business.service.ClassroomService;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 
 @Path("/classroom")
 public class ClassroomEndPoint {
@@ -24,5 +21,19 @@ public class ClassroomEndPoint {
     @Produces({"application/json"})
     public String createUser(String jsonString) {
         return service.createUser(jsonString);
+    }
+
+    @PUT
+    @Path("/json/{classroomID}")
+    @Produces({"application/json"})
+    public String updateUser(@PathParam("classroomID") Long classroomID, String classroomToUpdate) {
+        return service.updateUser(classroomID, classroomToUpdate);
+    }
+
+    @DELETE
+    @Path("/json/{classroomID}")
+    @Produces({"application/json"})
+    public String deleteUser(@PathParam("classroomID") Long classroomID) {
+        return service.deleteUser(classroomID);
     }
 }

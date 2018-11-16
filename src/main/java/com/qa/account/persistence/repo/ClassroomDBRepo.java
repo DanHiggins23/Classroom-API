@@ -1,6 +1,7 @@
 package com.qa.account.persistence.repo;
 
 import com.qa.account.persistence.domain.Classroom;
+import com.qa.account.persistence.domain.Trainee;
 import com.qa.account.util.JSONUtil;
 
 import javax.enterprise.inject.Default;
@@ -29,6 +30,12 @@ public class ClassroomDBRepo implements ClassroomInterface {
     }
 
     @Override
+    public String getAllTrainees() {
+        TypedQuery<Trainee> query = em.createQuery("SELECT t FROM Trainee t  ORDER BY t.traineeID ASC", Trainee.class);
+        return util.getJSONForObject(query.getResultList());
+    }
+
+    @Override
     @Transactional(REQUIRED)
     public String createUser(String jsonString) {
         Classroom newClassroom = util.getObjectForJSON(jsonString, Classroom.class);
@@ -38,13 +45,23 @@ public class ClassroomDBRepo implements ClassroomInterface {
 
     @Override
     @Transactional(REQUIRED)
-    public String updateUser(String jsonString) {
-        return null;
+    public String updateUser(Long classroomID, String classroomToUpdate) {
+        Classroom updatedClassroom = util.getObjectForJSON(classroomToUpdate, Classroom.class);
+        Classroom classroomFromDB = findAccount(classroomID);
+        classroomFromDB = updatedClassroom;
+        em.merge(classroomFromDB);
+        return "{message: account updated}";
     }
 
     @Override
     @Transactional(REQUIRED)
-    public String deleteUser(String jsonString) {
-        return null;
+    public String deleteUser(Long classroomID) {
+        Classroom classroomFromDB = findAccount(classroomID);
+        em.remove(classroomFromDB);
+        return "{message: account deleted}";
+    }
+
+    public Classroom findAccount(Long classroomID) {
+        return em.find(Classroom.class, classroomID);
     }
 }

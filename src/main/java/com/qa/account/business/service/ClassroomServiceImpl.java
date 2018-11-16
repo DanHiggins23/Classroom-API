@@ -14,17 +14,22 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
+    public String getAllTrainees() {
+        return repo.getAllTrainees();
+    }
+
+    @Override
     public String createUser(String account) {
         return repo.createUser(account);
     }
 
     @Override
-    public String updateUser(String account) {
-        return repo.updateUser(account);
+    public String updateUser(Long classroomID, String classroomToUpdate) {
+        return repo.updateUser(classroomID, classroomToUpdate);
     }
 
     @Override
-    public String deleteUser(String account) {
-        return repo.deleteUser(account);
+    public String deleteUser(Long classroomID) {
+        return repo.deleteUser(classroomID);
     }
 }
