@@ -38,8 +38,16 @@ public class ClassroomDBRepo implements ClassroomInterface {
 
     @Override
     @Transactional(REQUIRED)
-    public String updateUser(String jsonString) {
-        return null;
+    public String updateUser(Long classroomID, String classroomToUpdate) {
+        Classroom updatedClassroom = util.getObjectForJSON(classroomToUpdate, Classroom.class);
+        Classroom classroomFromDB = findAccount(classroomID);
+        classroomFromDB = updatedClassroom;
+        em.merge(classroomFromDB);
+        return "{message: account updated}";
+    }
+
+    public Classroom findAccount(Long classroomID) {
+        return em.find(Classroom.class, classroomID);
     }
 
     @Override
