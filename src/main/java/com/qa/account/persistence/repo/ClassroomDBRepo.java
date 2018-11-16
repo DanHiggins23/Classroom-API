@@ -1,6 +1,7 @@
 package com.qa.account.persistence.repo;
 
 import com.qa.account.persistence.domain.Classroom;
+import com.qa.account.util.JSONUtil;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -18,7 +19,7 @@ public class ClassroomDBRepo implements ClassroomInterface {
     private EntityManager em;
 
     @Inject
-    private JSONUTIL util;
+    private JSONUtil util;
 
     @Override
     public String getAllClassrooms() {
