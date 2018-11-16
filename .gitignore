@@ -4,6 +4,7 @@
 *.iml
 *.settings
 *target
+*out
 
 # Compiled class file
 *.class
