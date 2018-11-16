@@ -19,8 +19,8 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public String updateUser(Long classroomID, String account) {
-        return repo.updateUser(classroomID, account);
+    public String updateUser(Long classroomID, String classroomToUpdate) {
+        return repo.updateUser(classroomID, classroomToUpdate);
     }
 
     @Override

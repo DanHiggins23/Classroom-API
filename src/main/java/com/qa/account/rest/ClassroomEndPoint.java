@@ -26,7 +26,7 @@ public class ClassroomEndPoint {
     @PUT
     @Path("/json/{classroomID}")
     @Produces({"application/json"})
-    public String updateUser(@PathParam("classroomID") Long classroomID, String jsonString) {
-        return service.updateUser(classroomID, jsonString);
+    public String updateUser(@PathParam("classroomID") Long classroomID, String classroomToUpdate) {
+        return service.updateUser(classroomID, classroomToUpdate);
     }
 }
