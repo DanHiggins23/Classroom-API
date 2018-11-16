@@ -1,3 +1,10 @@
+# Manually added
+*.idea
+*.project
+*.iml
+*.settings
+*target
+
 # Compiled class file
 *.class
 
