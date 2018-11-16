@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 
 @Path("/classroom")
 public class ClassroomEndPoint {
@@ -20,6 +21,7 @@ public class ClassroomEndPoint {
 
     @POST
     @Path("/json")
+    @Produces({"application/json"})
     public String createUser(String jsonString) {
         return service.createUser(jsonString);
     }
