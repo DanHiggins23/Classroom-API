@@ -14,6 +14,11 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
+    public String getAllTrainees() {
+        return repo.getAllTrainees();
+    }
+
+    @Override
     public String createUser(String account) {
         return repo.createUser(account);
     }

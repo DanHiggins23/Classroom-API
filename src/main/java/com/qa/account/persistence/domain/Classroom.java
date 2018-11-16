@@ -1,6 +1,7 @@
 package com.qa.account.persistence.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Classroom {
@@ -8,8 +9,8 @@ public class Classroom {
     private Long classroomID;
     @Column(length = 100)
     private String trainer;
-//    @OneToMany @JoinColumn(name = "traineeID")
-//    private String traineeName;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Trainee> trainee;
 
     public Classroom() {
     }
@@ -33,5 +34,9 @@ public class Classroom {
 
     public void setTrainer(String trainer) {
         this.trainer = trainer;
+    }
+
+    public void setTrainees(List<Trainee> trainee) {
+        this.trainee = trainee;
     }
 }

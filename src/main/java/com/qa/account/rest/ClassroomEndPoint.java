@@ -36,5 +36,4 @@ public class ClassroomEndPoint {
     public String deleteUser(@PathParam("classroomID") Long classroomID) {
         return service.deleteUser(classroomID);
     }
-
 }

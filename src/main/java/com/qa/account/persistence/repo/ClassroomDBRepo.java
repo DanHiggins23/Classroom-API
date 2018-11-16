@@ -1,6 +1,7 @@
 package com.qa.account.persistence.repo;
 
 import com.qa.account.persistence.domain.Classroom;
+import com.qa.account.persistence.domain.Trainee;
 import com.qa.account.util.JSONUtil;
 
 import javax.enterprise.inject.Default;
@@ -25,6 +26,12 @@ public class ClassroomDBRepo implements ClassroomInterface {
     @Override
     public String getAllClassrooms() {
         TypedQuery<Classroom> query = em.createQuery("SELECT c FROM Classroom c  ORDER BY c.classroomID ASC", Classroom.class);
+        return util.getJSONForObject(query.getResultList());
+    }
+
+    @Override
+    public String getAllTrainees() {
+        TypedQuery<Trainee> query = em.createQuery("SELECT t FROM Trainee t  ORDER BY t.traineeID ASC", Trainee.class);
         return util.getJSONForObject(query.getResultList());
     }
 
