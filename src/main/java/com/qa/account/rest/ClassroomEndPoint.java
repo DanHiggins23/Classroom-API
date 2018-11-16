@@ -29,4 +29,12 @@ public class ClassroomEndPoint {
     public String updateUser(@PathParam("classroomID") Long classroomID, String classroomToUpdate) {
         return service.updateUser(classroomID, classroomToUpdate);
     }
+
+    @DELETE
+    @Path("/json/{classroomID}")
+    @Produces({"application/json"})
+    public String deleteUser(@PathParam("classroomID") Long classroomID) {
+        return service.deleteUser(classroomID);
+    }
+
 }

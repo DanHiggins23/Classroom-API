@@ -24,7 +24,7 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public String deleteUser(String account) {
-        return repo.deleteUser(account);
+    public String deleteUser(Long classroomID) {
+        return repo.deleteUser(classroomID);
     }
 }

@@ -46,13 +46,15 @@ public class ClassroomDBRepo implements ClassroomInterface {
         return "{message: account updated}";
     }
 
-    public Classroom findAccount(Long classroomID) {
-        return em.find(Classroom.class, classroomID);
-    }
-
     @Override
     @Transactional(REQUIRED)
-    public String deleteUser(String jsonString) {
-        return null;
+    public String deleteUser(Long classroomID) {
+        Classroom classroomFromDB = findAccount(classroomID);
+        em.remove(classroomFromDB);
+        return "{message: account deleted}";
+    }
+
+    public Classroom findAccount(Long classroomID) {
+        return em.find(Classroom.class, classroomID);
     }
 }

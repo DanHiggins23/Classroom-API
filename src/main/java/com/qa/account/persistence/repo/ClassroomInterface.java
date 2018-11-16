@@ -4,5 +4,5 @@ public interface ClassroomInterface {
     String getAllClassrooms();
     String createUser(String jsonString);
     String updateUser(Long classroomID, String classroomToUpdate);
-    String deleteUser(String jsonString);
+    String deleteUser(Long classroomID);
 }
